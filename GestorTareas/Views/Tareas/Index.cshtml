@@ -1,4 +1,4 @@
-@model IEnumerable<GestorTareas.Models.Tarea>
+﻿@model IEnumerable<GestorTareas.Models.Tarea>
 
 @{
     ViewData["Title"] = "Mis tareas";
@@ -25,7 +25,7 @@
             <tr>
                 <td>@item.Titulo</td>
                 <td>@item.Materia</td>
-                <td>@item.FechaLimite</td>
+                <td>@item.FechaLimite.ToString("dd/MM/yyyy")</td>
                 <td>@item.Prioridad</td>
                 <td>@(item.Completada ? "Completada" : "Pendiente")</td>
                 <td>
