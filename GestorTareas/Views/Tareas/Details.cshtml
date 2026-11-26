@@ -1,39 +1,26 @@
-@model IEnumerable<GestorTareas.Models.Tarea>
+@model GestorTareas.Models.Tarea
 
 @{
-    ViewData["Title"] = "Mis tareas";
+    ViewData["Title"] = "Detalle de tarea";
 }
 
-<h1>Mis tareas</h1>
+<h1>@Model.Titulo</h1>
 
-<p><a asp-action="Create" class="btn btn-primary">Crear nueva tarea</a></p>
+<dl class="row">
+    <dt class="col-sm-3">Descripción</dt>
+    <dd class="col-sm-9">@(Model.Descripcion ?? "Sin descripción")</dd>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Título</th>
-            <th>Materia</th>
-            <th>Fecha límite</th>
-            <th>Prioridad</th>
-            <th>Estado</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Titulo</td>
-                <td>@item.Materia</td>
-                <td>@item.FechaLimite</td>
-                <td>@item.Prioridad</td>
-                <td>@(item.Completada ? "Completada" : "Pendiente")</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
-                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <dt class="col-sm-3">Materia</dt>
+    <dd class="col-sm-9">@Model.Materia</dd>
+
+    <dt class="col-sm-3">Fecha límite</dt>
+    <dd class="col-sm-9">@Model.FechaLimite.ToString("dd/MM/yyyy")</dd>
+
+    <dt class="col-sm-3">Prioridad</dt>
+    <dd class="col-sm-9">@Model.Prioridad</dd>
+
+    <dt class="col-sm-3">Estado</dt>
+    <dd class="col-sm-9">@(Model.Completada ? "Completada" : "Pendiente")</dd>
+</dl>
+
+<a asp-action="Index">Volver a la lista</a>
