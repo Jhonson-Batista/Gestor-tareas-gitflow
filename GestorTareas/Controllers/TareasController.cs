@@ -1,4 +1,5 @@
 ﻿using GestorTareas.Data;
+using GestorTareas.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -32,6 +33,25 @@ public class TareasController : Controller
         if (tarea == null)
         {
             return NotFound();
+        }
+
+        return View(tarea);
+    }
+
+    public IActionResult Create()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create([Bind("Titulo,Descripcion,Materia,FechaLimite,Prioridad,Completada")] Tarea tarea)
+    {
+        if (ModelState.IsValid)
+        {
+            _context.Add(tarea);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         return View(tarea);
