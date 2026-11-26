@@ -1,0 +1,33 @@
+@model IEnumerable<GestorTareas.Models.Tarea>
+
+@{
+    ViewData["Title"] = "Mis tareas";
+}
+
+<h1>Mis tareas</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Materia</th>
+            <th>Fecha límite</th>
+            <th>Prioridad</th>
+            <th>Estado</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Titulo</td>
+                <td>@item.Materia</td>
+                <td>@item.FechaLimite</td>
+                <td>@item.Prioridad</td>
+                <td>@(item.Completada ? "Completada" : "Pendiente")</td>
+                <td><a asp-action="Details" asp-route-id="@item.Id">Detalles</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
