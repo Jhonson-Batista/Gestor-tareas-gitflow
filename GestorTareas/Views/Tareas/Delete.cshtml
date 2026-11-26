@@ -1,0 +1,29 @@
+@model GestorTareas.Models.Tarea
+
+@{
+    ViewData["Title"] = "Eliminar tarea";
+}
+
+<h1>Eliminar tarea</h1>
+
+<h4 class="text-danger">¿Seguro que quieres eliminar esta tarea?</h4>
+
+<dl class="row">
+    <dt class="col-sm-3">Título</dt>
+    <dd class="col-sm-9">@Model.Titulo</dd>
+
+    <dt class="col-sm-3">Materia</dt>
+    <dd class="col-sm-9">@Model.Materia</dd>
+
+    <dt class="col-sm-3">Fecha límite</dt>
+    <dd class="col-sm-9">@Model.FechaLimite</dd>
+
+    <dt class="col-sm-3">Prioridad</dt>
+    <dd class="col-sm-9">@Model.Prioridad</dd>
+</dl>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
