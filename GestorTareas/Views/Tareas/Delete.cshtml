@@ -1,4 +1,4 @@
-@model GestorTareas.Models.Tarea
+﻿@model GestorTareas.Models.Tarea
 
 @{
     ViewData["Title"] = "Eliminar tarea";
@@ -16,7 +16,7 @@
     <dd class="col-sm-9">@Model.Materia</dd>
 
     <dt class="col-sm-3">Fecha límite</dt>
-    <dd class="col-sm-9">@Model.FechaLimite</dd>
+    <dd class="col-sm-9">@Model.FechaLimite.ToString("dd/MM/yyyy")</dd>
 
     <dt class="col-sm-3">Prioridad</dt>
     <dd class="col-sm-9">@Model.Prioridad</dd>
